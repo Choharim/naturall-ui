@@ -14,7 +14,6 @@
     "type": "git",
     "url": "https://github.com/Choharim/naturall-ui.git"
   },
-  "private": false,
   "publishConfig": {
     "access": "public"
   },
@@ -25,7 +24,7 @@
   ],
   "author": "Choharim",
   "scripts": {
-    "build": "rm -rf ./dist && tsc",
+    "build": "rm -rf ./dist && yarn tsc",
     "prepare": "yarn build",
     "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx,json,css,md}'",
     "lint": "eslint 'src/**/*.{ts,tsx}'",

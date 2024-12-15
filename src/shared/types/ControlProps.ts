@@ -1,5 +1,5 @@
 type Index = number;
-type Key = Index | `${Index}`;
+type Key = Index;
 
 export type ControlProps = {
   key: Key;

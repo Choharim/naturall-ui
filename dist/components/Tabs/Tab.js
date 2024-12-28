@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTabsControlContext } from './_stores';
-import { isEqualKey, isValidKey } from '@/shared/utils';
+import { isEqualKey, isValidKey } from '../../shared/utils';
 function Tab({ key, label, ...props }) {
     const { onKeyChange, key: activeKey } = useTabsControlContext();
     const isActive = !!key && isEqualKey(activeKey, key);

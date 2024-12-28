@@ -25,7 +25,7 @@
   ],
   "author": "Choharim",
   "scripts": {
-    "build": "rm -rf ./dist && yarn tsc",
+    "build": "rm -rf ./dist && tsc && tsc-alias",
     "prepare": "yarn build",
     "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx,json,css,md}'",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
@@ -67,6 +67,7 @@
     "eslint-plugin-storybook": "^0.11.1",
     "prettier": "^3.3.3",
     "storybook": "^8.4.7",
+    "tsc-alias": "^1.8.10",
     "typescript": "^5.5.4"
   },
   "packageManager": "yarn@4.4.0"

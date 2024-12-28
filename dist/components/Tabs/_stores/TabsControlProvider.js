@@ -1,5 +1,5 @@
 import React from 'react';
-import { createSafeContext } from '@/shared/hooks';
+import { createSafeContext } from '../../../shared/hooks';
 function TabsControlProvider({ children, key, onKeyChange, }) {
     const values = React.useMemo(() => ({
         key,

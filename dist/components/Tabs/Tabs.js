@@ -1,6 +1,6 @@
 import React from 'react';
 import TabsControlProvider from './_stores/TabsControlProvider';
-import { isEqualKey } from '@/shared/utils';
+import { isEqualKey } from '../../shared/utils';
 import Tab from './Tab';
 function Tabs({ children, key, onKeyChange, indicator, ...props }) {
     return (React.createElement(TabsControlProvider, { key: key, onKeyChange: onKeyChange },

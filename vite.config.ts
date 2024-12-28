@@ -1,13 +1,19 @@
 import { defineConfig } from 'vite';
 import path from 'path';
 import react from '@vitejs/plugin-react-swc';
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    dts({
+      include: ['src'],
+      tsconfigPath: './tsconfig.json', // TypeScript 설정 파일 경로
+      insertTypesEntry: true, // package.json에 types 항목 자동 추가
+    }),
+  ],
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'), // @/로 시작하는 경로를 src 디렉토리로 매핑
-    },
+    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
   },
   build: {
     lib: {

@@ -2,19 +2,20 @@ import React from 'react';
 
 import { useTabsControlContext } from './_stores';
 import { type TabsControlProps } from './_types';
-import { isEqualKey, isValidKey } from '@/shared/utils';
+import { isEqualKeyValue, isValidKeyValue } from '@/shared/utils';
 
 interface TabProps extends React.ComponentProps<'button'> {
-  key?: TabsControlProps['key'];
+  keyValue?: TabsControlProps['keyValue'];
   label: React.ReactNode;
 }
-function Tab({ key, label, ...props }: TabProps) {
-  const { onKeyChange, key: activeKey } = useTabsControlContext();
-  const isActive = !!key && isEqualKey(activeKey, key);
+function Tab({ keyValue, label, ...props }: TabProps) {
+  const { onKeyValueChange, keyValue: activeKeyValue } =
+    useTabsControlContext();
+  const isActive = !!keyValue && isEqualKeyValue(activeKeyValue, keyValue);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (!!key && isValidKey(key)) {
-      onKeyChange(key);
+    if (isValidKeyValue(keyValue)) {
+      onKeyValueChange(keyValue);
     }
 
     props.onClick?.(e);
@@ -23,9 +24,9 @@ function Tab({ key, label, ...props }: TabProps) {
   return (
     <button
       type="button"
-      id={`tab-${key}`}
+      id={`tab-${keyValue}`}
       role="tab"
-      aria-controls={`tabpanel-${key}`}
+      aria-controls={`tabpanel-${keyValue}`}
       aria-selected={isActive}
       onClick={handleClick}
       {...props}

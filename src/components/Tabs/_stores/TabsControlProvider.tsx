@@ -3,20 +3,20 @@ import React from 'react';
 import { type TabsControlProps } from '../_types';
 import { createSafeContext } from '@/shared/hooks';
 
-type Values = Pick<TabsControlProps, 'key' | 'onKeyChange'>;
+type Values = Pick<TabsControlProps, 'keyValue' | 'onKeyValueChange'>;
 
 interface Props extends Values {}
 function TabsControlProvider({
   children,
-  key,
-  onKeyChange,
+  keyValue,
+  onKeyValueChange,
 }: React.PropsWithChildren<Props>) {
   const values = React.useMemo(
     () => ({
-      key,
-      onKeyChange,
+      keyValue,
+      onKeyValueChange,
     }),
-    [key, onKeyChange],
+    [keyValue, onKeyValueChange],
   );
 
   return (

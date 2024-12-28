@@ -1,15 +1,15 @@
 import React from 'react';
 import { useTabsControlContext } from './_stores';
-import { isEqualKey, isValidKey } from '../../shared/utils';
-function Tab({ key, label, ...props }) {
-    const { onKeyChange, key: activeKey } = useTabsControlContext();
-    const isActive = !!key && isEqualKey(activeKey, key);
+import { isEqualKeyValue, isValidKeyValue } from '../../shared/utils';
+function Tab({ keyValue, label, ...props }) {
+    const { onKeyValueChange, keyValue: activeKeyValue } = useTabsControlContext();
+    const isActive = !!keyValue && isEqualKeyValue(activeKeyValue, keyValue);
     const handleClick = (e) => {
-        if (!!key && isValidKey(key)) {
-            onKeyChange(key);
+        if (isValidKeyValue(keyValue)) {
+            onKeyValueChange(keyValue);
         }
         props.onClick?.(e);
     };
-    return (React.createElement("button", { type: "button", id: `tab-${key}`, role: "tab", "aria-controls": `tabpanel-${key}`, "aria-selected": isActive, onClick: handleClick, ...props }, label));
+    return (React.createElement("button", { type: "button", id: `tab-${keyValue}`, role: "tab", "aria-controls": `tabpanel-${keyValue}`, "aria-selected": isActive, onClick: handleClick, ...props }, label));
 }
 export default Tab;

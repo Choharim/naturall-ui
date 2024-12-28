@@ -5,12 +5,10 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.js"
     }
   },
   "main": "dist/index.js",
-  "module": "dist/esm/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Choharim/naturall-ui.git"

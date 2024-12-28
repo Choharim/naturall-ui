@@ -1,7 +1,7 @@
 type Index = number;
-type Key = Index;
+type KeyValue = Index;
 export type ControlProps = {
-    key: Key;
-    onKeyChange: (key: Key) => void;
+    keyValue: KeyValue;
+    onKeyValueChange: (keyValue: KeyValue) => void;
 };
 export {};

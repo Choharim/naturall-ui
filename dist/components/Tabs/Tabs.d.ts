@@ -1,12 +1,11 @@
 import React from 'react';
 import { type TabsControlProps } from './_types';
 import Tab from './Tab';
-interface TabsProps extends Omit<React.ComponentProps<'ul'>, 'key'>, TabsControlProps {
+interface TabsProps extends React.ComponentPropsWithoutRef<'ul'>, TabsControlProps {
     children: React.ReactElement[];
     indicator?: React.ReactElement;
 }
-declare function Tabs({ children, key, onKeyChange, indicator, ...props }: TabsProps): React.JSX.Element;
-declare const _default: typeof Tabs & {
+declare const _default: React.ForwardRefExoticComponent<TabsProps & React.RefAttributes<HTMLUListElement>> & {
     Tab: typeof Tab;
 };
 export default _default;

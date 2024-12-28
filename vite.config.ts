@@ -1,21 +1,28 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
 import path from 'path';
+import react from '@vitejs/plugin-react-swc';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+    alias: {
+      '@': path.resolve(__dirname, 'src'), // @/로 시작하는 경로를 src 디렉토리로 매핑
+    },
   },
-
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'index',
-      fileName: 'index',
-      formats: ['cjs', 'es'],
+      formats: ['es', 'cjs'],
+      fileName: (format) => `index.${format}.js`,
     },
-    outDir: 'dist',
+    rollupOptions: {
+      external: ['react', 'react-dom'],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+        },
+      },
+    },
   },
 });

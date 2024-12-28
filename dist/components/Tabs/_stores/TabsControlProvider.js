@@ -8,5 +8,4 @@ function TabsControlProvider({ children, key, onKeyChange, }) {
     return (React.createElement(ControlContext.Provider, { value: values }, children));
 }
 export default TabsControlProvider;
-export const ControlContext = createSafeContext();
-ControlContext.displayName = 'ControlContext';
+export const ControlContext = createSafeContext('ControlContext');

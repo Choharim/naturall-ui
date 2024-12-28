@@ -9,10 +9,16 @@ const INITIAL_CONTEXT_VALUE = null;
  * create provider
  */
 type ContextValue = Parameters<typeof React.createContext>[0];
-const createSafeContext = <Values extends ContextValue>() => {
-  return React.createContext<typeof INITIAL_CONTEXT_VALUE | Values>(
+const createSafeContext = <Values extends ContextValue>(
+  displayName: string,
+) => {
+  const context = React.createContext<typeof INITIAL_CONTEXT_VALUE | Values>(
     INITIAL_CONTEXT_VALUE,
   );
+
+  context.displayName = displayName;
+
+  return context;
 };
 
 /**

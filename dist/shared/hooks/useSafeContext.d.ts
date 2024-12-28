@@ -7,7 +7,7 @@ declare const INITIAL_CONTEXT_VALUE: null;
  * create provider
  */
 type ContextValue = Parameters<typeof React.createContext>[0];
-declare const createSafeContext: <Values extends ContextValue>() => React.Context<Values | null>;
+declare const createSafeContext: <Values extends ContextValue>(displayName: string) => React.Context<Values | null>;
 /**
  * consumer hook
  */

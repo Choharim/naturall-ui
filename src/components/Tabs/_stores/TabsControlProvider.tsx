@@ -26,5 +26,4 @@ function TabsControlProvider({
 
 export default TabsControlProvider;
 
-export const ControlContext = createSafeContext<Values>();
-ControlContext.displayName = 'ControlContext';
+export const ControlContext = createSafeContext<Values>('ControlContext');

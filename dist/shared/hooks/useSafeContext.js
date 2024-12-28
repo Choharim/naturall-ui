@@ -3,8 +3,10 @@ import React from 'react';
  * 초기 value
  */
 const INITIAL_CONTEXT_VALUE = null;
-const createSafeContext = () => {
-    return React.createContext(INITIAL_CONTEXT_VALUE);
+const createSafeContext = (displayName) => {
+    const context = React.createContext(INITIAL_CONTEXT_VALUE);
+    context.displayName = displayName;
+    return context;
 };
 const useSafeContext = ({ context: _context, displayName, }) => {
     const context = React.useContext(_context);

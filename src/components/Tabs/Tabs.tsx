@@ -1,26 +1,32 @@
-import React from 'react';
+import React, { ComponentProps, ForwardedRef, forwardRef } from 'react';
 
 import TabsControlProvider from './_stores/TabsControlProvider';
 import { type TabsControlProps } from './_types';
-import { isEqualKey } from '@/shared/utils';
+import { isEqualKeyValue } from '@/shared/utils';
 import Tab from './Tab';
 
 interface TabsProps
-  extends Omit<React.ComponentProps<'ul'>, 'key'>,
+  extends React.ComponentPropsWithoutRef<'ul'>,
     TabsControlProps {
   children: React.ReactElement[];
   indicator?: React.ReactElement;
 }
 
-function Tabs({ children, key, onKeyChange, indicator, ...props }: TabsProps) {
+function Tabs(
+  { children, keyValue, onKeyValueChange, indicator, ...props }: TabsProps,
+  forwardedRef: ForwardedRef<HTMLUListElement>,
+) {
   return (
-    <TabsControlProvider key={key} onKeyChange={onKeyChange}>
-      <ul {...props} role="tablist">
+    <TabsControlProvider
+      keyValue={keyValue}
+      onKeyValueChange={onKeyValueChange}
+    >
+      <ul {...props} role="tablist" ref={forwardedRef}>
         {React.Children.map(children, (child, index) => (
           <li key={index}>
             {React.cloneElement(child, {
               ...child.props,
-              value: index,
+              keyValue: index,
             })}
           </li>
         ))}
@@ -29,14 +35,14 @@ function Tabs({ children, key, onKeyChange, indicator, ...props }: TabsProps) {
       </ul>
 
       {React.Children.map(children, (child, index) => {
-        if (isEqualKey(index, key)) {
+        if (isEqualKeyValue(index, keyValue)) {
           if (!child.props?.children) return;
 
           return React.cloneElement(child.props.children, {
             ...child.props.children.props,
-            id: `tabpanel-${key}`,
+            id: `tabpanel-${keyValue}`,
             role: 'tabpanel',
-            'aria-labelledby': `tab-${key}`,
+            'aria-labelledby': `tab-${keyValue}`,
           });
         }
       })}
@@ -44,6 +50,6 @@ function Tabs({ children, key, onKeyChange, indicator, ...props }: TabsProps) {
   );
 }
 
-export default Object.assign(Tabs, {
+export default Object.assign(forwardRef(Tabs), {
   Tab,
 });

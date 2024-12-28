@@ -24,12 +24,18 @@ const meta: Meta<ComponentProps<typeof Tabs>> = {
 
     return (
       <div style={{ width: '500px' }}>
-        <Tabs {...props} key={tab} onKeyChange={(v) => setTab(v)}>
-          <Tabs.Tab label={<span>첫번째 탭 제목</span>}></Tabs.Tab>
+        <Tabs {...props} keyValue={tab} onKeyValueChange={(v) => setTab(v)}>
+          <Tabs.Tab label={<span>첫번째 탭 제목</span>}>
+            <section>첫번째</section>
+          </Tabs.Tab>
 
-          <Tabs.Tab label={<>두번째 탭 제목입니다</>}></Tabs.Tab>
+          <Tabs.Tab label={<>두번째 탭 제목입니다</>}>
+            <section>두번째</section>
+          </Tabs.Tab>
 
-          <Tabs.Tab label="세번째 탭 제목입니다"></Tabs.Tab>
+          <Tabs.Tab label="세번째 탭 제목입니다">
+            <section>세번째</section>
+          </Tabs.Tab>
         </Tabs>
       </div>
     );

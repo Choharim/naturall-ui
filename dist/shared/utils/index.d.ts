@@ -1,3 +1,3 @@
-import { isEqualKey } from './isEqualKey';
-import { isValidKey } from './isValidKey';
-export { isValidKey, isEqualKey };
+import { isEqualKeyValue } from './isEqualKeyValue';
+import { isValidKeyValue } from './isValidKeyValue';
+export { isValidKeyValue, isEqualKeyValue };

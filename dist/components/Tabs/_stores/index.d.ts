@@ -1,4 +1,4 @@
 export declare const useTabsControlContext: () => {
-    key: number;
-    onKeyChange: (key: number) => void;
+    keyValue: number;
+    onKeyValueChange: (keyValue: number) => void;
 };

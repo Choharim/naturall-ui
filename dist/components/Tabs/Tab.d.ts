@@ -1,5 +1,5 @@
-import React from 'react';
-import { type TabsControlProps } from './_types';
+import { default as React } from 'react';
+import { TabsControlProps } from './_types';
 interface TabProps extends React.ComponentProps<'button'> {
     keyValue?: TabsControlProps['keyValue'];
     label: React.ReactNode;

@@ -1,5 +1,5 @@
-import React from 'react';
-import { type TabsControlProps } from '../_types';
+import { default as React } from 'react';
+import { TabsControlProps } from '../_types';
 type Values = Pick<TabsControlProps, 'keyValue' | 'onKeyValueChange'>;
 interface Props extends Values {
 }

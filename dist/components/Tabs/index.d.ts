@@ -1,3 +1,3 @@
 import { useTabsControlContext } from './_stores';
-import Tabs from './Tabs';
+import { default as Tabs } from './Tabs';
 export { useTabsControlContext, Tabs };

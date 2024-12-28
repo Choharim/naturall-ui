@@ -1,6 +1,6 @@
-import React from 'react';
-import { type TabsControlProps } from './_types';
-import Tab from './Tab';
+import { default as React } from 'react';
+import { TabsControlProps } from './_types';
+import { default as Tab } from './Tab';
 interface TabsProps extends React.ComponentPropsWithoutRef<'ul'>, TabsControlProps {
     children: React.ReactElement[];
     indicator?: React.ReactElement;

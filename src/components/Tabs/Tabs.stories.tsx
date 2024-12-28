@@ -2,7 +2,7 @@ import React, { ComponentProps, useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import Tabs from '../components/Tabs/Tabs';
+import Tabs from './Tabs';
 
 const meta: Meta<ComponentProps<typeof Tabs>> = {
   title: 'Components/Tabs',

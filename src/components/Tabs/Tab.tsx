@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { useTabsControlContext } from './_stores';
 import { type TabsControlProps } from './_types';
 import { isEqualKeyValue, isValidKeyValue } from '@/shared/utils';
+import { useTabsControlContext } from './context';
 
 interface TabProps extends React.ComponentProps<'button'> {
   keyValue?: TabsControlProps['keyValue'];

@@ -1,9 +1,9 @@
 import React, { ComponentProps, ForwardedRef, forwardRef } from 'react';
 
-import TabsControlProvider from './_stores/TabsControlProvider';
-import { type TabsControlProps } from './_types';
+import { type TabsControlProps } from './types';
 import { isEqualKeyValue } from '@/shared/utils';
 import Tab from './Tab';
+import TabsProvider from './TabsProvider';
 
 interface TabsProps
   extends React.ComponentPropsWithoutRef<'ul'>,
@@ -17,10 +17,7 @@ function Tabs(
   forwardedRef: ForwardedRef<HTMLUListElement>,
 ) {
   return (
-    <TabsControlProvider
-      keyValue={keyValue}
-      onKeyValueChange={onKeyValueChange}
-    >
+    <TabsProvider keyValue={keyValue} onKeyValueChange={onKeyValueChange}>
       <ul {...props} role="tablist" ref={forwardedRef}>
         {React.Children.map(children, (child, index) => (
           <li key={index}>
@@ -46,7 +43,7 @@ function Tabs(
           });
         }
       })}
-    </TabsControlProvider>
+    </TabsProvider>
   );
 }
 

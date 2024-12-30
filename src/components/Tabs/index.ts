@@ -1,4 +1,4 @@
-import { useTabsControlContext } from './_stores';
+import { useTabsContext } from './TabsProvider';
 import Tabs from './Tabs';
 
-export { useTabsControlContext, Tabs };
+export { useTabsContext, Tabs };

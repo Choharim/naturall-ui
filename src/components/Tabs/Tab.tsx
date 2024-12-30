@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { ForwardedRef, forwardRef } from 'react';
 
-import { useTabsControlContext } from './_stores';
-import { type TabsControlProps } from './_types';
+import { type TabsControlProps } from './types';
 import { isEqualKeyValue, isValidKeyValue } from '@/shared/utils';
+import { useTabsContext } from './TabsProvider';
 
-interface TabProps extends React.ComponentProps<'button'> {
+export interface TabProps extends React.ComponentPropsWithRef<'button'> {
   keyValue?: TabsControlProps['keyValue'];
   label: React.ReactNode;
 }
-function Tab({ keyValue, label, ...props }: TabProps) {
-  const { onKeyValueChange, keyValue: activeKeyValue } =
-    useTabsControlContext();
-  const isActive = !!keyValue && isEqualKeyValue(activeKeyValue, keyValue);
+function Tab(
+  { keyValue, label, ...props }: TabProps,
+  forwardedRef: ForwardedRef<HTMLButtonElement>,
+) {
+  const { onKeyValueChange, keyValue: activeKeyValue } = useTabsContext();
+  const isActive = isEqualKeyValue(activeKeyValue, keyValue);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (isValidKeyValue(keyValue)) {
@@ -23,17 +25,18 @@ function Tab({ keyValue, label, ...props }: TabProps) {
 
   return (
     <button
+      {...props}
       type="button"
       id={`tab-${keyValue}`}
       role="tab"
       aria-controls={`tabpanel-${keyValue}`}
       aria-selected={isActive}
       onClick={handleClick}
-      {...props}
+      ref={forwardedRef}
     >
       {label}
     </button>
   );
 }
 
-export default Tab;
+export default forwardRef(Tab);

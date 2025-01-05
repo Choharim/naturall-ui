@@ -13,7 +13,6 @@ function Tab(
   forwardedRef: ForwardedRef<HTMLButtonElement>,
 ) {
   const { onKeyValueChange, keyValue: activeKeyValue } = useTabsContext();
-  const isActive = isEqualKeyValue(activeKeyValue, keyValue);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (isValidKeyValue(keyValue)) {
@@ -30,7 +29,7 @@ function Tab(
       id={`tab-${keyValue}`}
       role="tab"
       aria-controls={`tabpanel-${keyValue}`}
-      aria-selected={isActive}
+      aria-selected={isEqualKeyValue(activeKeyValue, keyValue)}
       onClick={handleClick}
       ref={forwardedRef}
     >

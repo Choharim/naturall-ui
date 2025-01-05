@@ -4,13 +4,13 @@ import React from 'react';
  * create provider
  */
 type ContextValue = Parameters<typeof React.createContext>[0];
-const createContextProvider = <Values extends ContextValue>({
+function createContextProvider<Values extends ContextValue>({
   displayName,
   ...params
 }: { displayName: string } & (
   | { strict?: true }
   | { strict: false; defaultValue: Values }
-)) => {
+)) {
   const _context = React.createContext(
     params.strict === false ? params.defaultValue : undefined,
   );
@@ -28,6 +28,6 @@ const createContextProvider = <Values extends ContextValue>({
   };
 
   return [_context.Provider, useContext] as const;
-};
+}
 
 export { createContextProvider };

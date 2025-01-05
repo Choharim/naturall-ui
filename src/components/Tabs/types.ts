@@ -2,5 +2,5 @@ import { ControlProps } from '@/shared/types';
 
 export type TabsControlProps = Pick<
   ControlProps,
-  'keyValue' | 'onKeyValueChange'
+  'keyValue' | 'onKeyValueChange' | 'defaultKeyValue'
 >;

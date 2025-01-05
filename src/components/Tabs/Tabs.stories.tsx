@@ -17,14 +17,27 @@ const meta: Meta<ComponentProps<typeof Tabs>> = {
       description:
         '선택된 탭의 연결된 콘텐츠를 렌더링합니다. 필요에 따라 사용하지 않을 수 있습니다. ex. 스와이퍼',
     },
+    defaultKeyValue: {
+      description: '기본으로 active될 keyValue를 지정합니다.',
+    },
+    keyValue: {
+      description:
+        'keyValue 값을 넘길 경우, keyValue 값을 조정하는 onKeyValueChange 함수가 필요합니다.',
+    },
   },
+};
 
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Controlled: Story = {
   render: (props) => {
-    const [tab, setTab] = useState(0);
+    const [keyValue, setKeyValue] = useState(2);
 
     return (
       <div style={{ width: '500px' }}>
-        <Tabs {...props} keyValue={tab} onKeyValueChange={(v) => setTab(v)}>
+        <Tabs {...props} keyValue={keyValue} onKeyValueChange={setKeyValue}>
           <Tabs.Tab label={<span>첫번째 탭 제목</span>}>
             <section>첫번째</section>
           </Tabs.Tab>
@@ -42,10 +55,24 @@ const meta: Meta<ComponentProps<typeof Tabs>> = {
   },
 };
 
-export default meta;
+export const UnControlled: Story = {
+  render: () => {
+    return (
+      <div style={{ width: '500px' }}>
+        <Tabs>
+          <Tabs.Tab label={<span>첫번째 탭 제목</span>}>
+            <section>첫번째</section>
+          </Tabs.Tab>
 
-type Story = StoryObj<typeof meta>;
+          <Tabs.Tab label={<>두번째 탭 제목입니다</>}>
+            <section>두번째</section>
+          </Tabs.Tab>
 
-export const Grey: Story = {
-  args: {},
+          <Tabs.Tab label="세번째 탭 제목입니다">
+            <section>세번째</section>
+          </Tabs.Tab>
+        </Tabs>
+      </div>
+    );
+  },
 };
